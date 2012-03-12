@@ -1,4 +1,11 @@
-﻿/* Styles for validation helpers
+﻿.item {
+    background-color: lightblue;
+    color: white;
+    padding: 10px;
+    font-size: 120%;
+}
+
+/* Styles for validation helpers
 -----------------------------------------------------------*/
 .field-validation-error {
     color: #f00;
