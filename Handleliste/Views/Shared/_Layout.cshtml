@@ -21,6 +21,55 @@
                 $.mobile.ajaxEnabled = false;
             });
         </script>
+        
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        function ItemViewModel(name) {
+            var self = this;
+            self.name = ko.observable(name);
+        };
+
+        function ShoppingListViewModel() {
+            var self = this;
+            self.items = ko.observableArray([
+                    //new ItemViewModel("brød"),
+                    //new ItemViewModel("melk")
+                 ]);
+
+            self.newItemText = ko.observable();
+
+            // Operations
+            self.addNewItem = function () {
+                var newItem = new ItemViewModel(this.newItemText());
+                self.items.push(newItem);
+                save(newItem);
+                self.newItemText("");
+            };
+
+            // Load initial state from server, convert it to ItemViewModel instances, then populate self.items
+                             $.getJSON("/api/items", function (data) {
+                                 var mappedItems = $.map(data, function (item) {
+                                     return new ItemViewModel(item.Name)
+                                 });
+                                 self.items(mappedItems);
+                             });
+
+            // Save to server
+            save = function (newItem) {
+                $.ajax("/api/items", {
+                    data: ko.toJSON(newItem),
+                    type: "post", contentType: "application/json",
+                    error: function (message) { alert(message) }
+                });
+            };
+        };
+
+        ko.applyBindings(new ShoppingListViewModel());
+    });
+    
+    </script>
     </head>
     <body>
         @RenderBody()

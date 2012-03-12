@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Handleliste";
+}
+
+@*<ul data-role="listview" data-inset="true">
+    <li data-role="list-divider">Handleliste</li>
+    <li>Melk</li>
+    <li>Brød</li>
+</ul>*@
+
+<h1>handleliste:</h1>
+
+<table>
+    <tbody data-bind="foreach: items">
+        <tr>
+            <td data-bind="text: name"></td>
+        </tr>    
+    </tbody>
+</table>
+
+<fieldset>
+    <legend></legend>
+    <p>
+        <input type="text" data-bind="value: newItemText" placeholder="ny vare" />
+        <button data-bind="click: addNewItem">legg til</button>
+    </p>
+</fieldset>
