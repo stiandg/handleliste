@@ -1,0 +1,4 @@
+*.suo
+*.csproj
+obj
+bin
