@@ -11,6 +11,7 @@
         
         <script src="@Url.Content("~/Scripts/modernizr-2.0.6-development-only.js")" type="text/javascript"></script>
         <script src="@Url.Content("~/Scripts/jquery-1.6.4.min.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Scripts/jquery-ui-1.8.11.min.js")" type="text/javascript"></script>
         <script src="@Url.Content("~/Scripts/knockout-2.0.0.js")" type="text/javascript"></script>
 
         <script>
@@ -54,6 +55,8 @@
                                      return new ItemViewModel(item.Name)
                                  });
                                  self.items(mappedItems);
+
+                                 $(".item").draggable();
                              });
 
             // Save to server
