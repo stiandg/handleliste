@@ -2,3 +2,5 @@
 *.user
 obj
 bin
+_ReSharper*
+_ReSharper.Handleliste
