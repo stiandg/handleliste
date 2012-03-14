@@ -1,4 +1,19 @@
-﻿.move_to_shopping_cart {
+﻿#addNewItemInputField {
+    float:left;
+    width: 90%;
+    margin-top: 8px;
+}
+
+#addNewItemButton 
+{
+    float:right;
+}
+
+#emptyListMessage {
+    color: darkgray;
+}
+
+.move_to_shopping_cart {
     background-color: lightblue;
     color: white;
     padding: 10px;

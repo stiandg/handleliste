@@ -20,11 +20,13 @@
     </tbody>
 </table>
 
+<div id="emptyListMessage" data-bind="visible: items().length == 0">ingen varer på handlelista</div>
+
 <fieldset>
     <legend></legend>
     <p>
-        <input type="text" data-bind="value: newItemText" placeholder="ny vare" />
-        <button data-bind="click: addNewItem">legg til</button>
+        <input id="addNewItemInputField" type="text" data-bind="value: newItemText" placeholder="ny vare" />
+        <button id="addNewItemButton" data-bind="click: addNewItem" data-icon="plus" data-inline="true">legg til</button>
     </p>
 </fieldset>
 
