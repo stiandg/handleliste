@@ -11,6 +11,7 @@
 
 #emptyListMessage {
     color: darkgray;
+    display: none;
 }
 
 .move_to_shopping_cart {
