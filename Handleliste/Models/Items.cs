@@ -26,11 +26,8 @@ namespace Handleliste.Models
                 if (minutesSinceCreated == 0)
                     return "nå";
 
-                if (minutesSinceCreated == 1)
-                    return "for 1 minutt siden";
-
                 if (minutesSinceCreated < 60)
-                    return string.Format("for {0} minutter siden", minutesSinceCreated);
+                    return string.Format("for {0} min siden", minutesSinceCreated);
 
                 var daysSinceCreated = (int) (DateTime.Now.Date - TimestampCreated.Date).TotalDays;
 
