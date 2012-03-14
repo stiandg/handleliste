@@ -24,6 +24,11 @@
     font-size: 120%;
 }
 
+.item:hover
+{
+    background-color: darkblue;
+}
+
 /* Styles for validation helpers
 -----------------------------------------------------------*/
 .field-validation-error {
