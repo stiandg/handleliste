@@ -158,11 +158,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Images\ajax-loader.gif" />
     <Content Include="Content\Images\ajax-loader.png" />
     <Content Include="Content\Images\icons-18-black.png" />
     <Content Include="Content\Images\icons-18-white.png" />
     <Content Include="Content\Images\icons-36-black.png" />
     <Content Include="Content\Images\icons-36-white.png" />
+    <Content Include="Content\Images\move_to_shopping_cart.png" />
     <Content Include="Content\jquery.mobile-1.0.css" />
     <Content Include="Content\jquery.mobile-1.0.min.css" />
     <Content Include="Content\jquery.mobile.structure-1.0.css" />

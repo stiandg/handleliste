@@ -1,7 +1,10 @@
-﻿.item {
-    background-image: url('Images/move_to_shopping_cart.png');
+﻿.loading {
+    background-image: url('Images/ajax-loader.gif');
     background-repeat: no-repeat;
-    background-position: right center;
+    background-position: center;
+}
+
+.item {
     background-color: lightblue;
     color: white;
     padding: 10px;

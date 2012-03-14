@@ -35,8 +35,8 @@
         function ShoppingListViewModel() {
             var self = this;
             self.items = ko.observableArray([
-                    //new ItemViewModel("brød"),
-                    //new ItemViewModel("melk")
+            //new ItemViewModel("brød"),
+            //new ItemViewModel("melk")
                  ]);
 
             self.newItemText = ko.observable();
@@ -50,14 +50,15 @@
             };
 
             // Load initial state from server, convert it to ItemViewModel instances, then populate self.items
-                             $.getJSON("/api/items", function (data) {
-                                 var mappedItems = $.map(data, function (item) {
-                                     return new ItemViewModel(item.Name)
-                                 });
-                                 self.items(mappedItems);
+            $.getJSON("/api/items", function (data) {
+                var mappedItems = $.map(data, function (item) {
+                    return new ItemViewModel(item.Name)
+                });
+                self.items(mappedItems);
 
-                                 $(".item").draggable();
-                             });
+                $(".item").draggable();
+                $("#loader").removeClass("loading");
+            });
 
             // Save to server
             save = function (newItem) {
