@@ -1,4 +1,7 @@
 ﻿.item {
+    background-image: url('Images/move_to_shopping_cart.png');
+    background-repeat: no-repeat;
+    background-position: right center;
     background-color: lightblue;
     color: white;
     padding: 10px;
