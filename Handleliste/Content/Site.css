@@ -24,7 +24,7 @@
     font-size: 120%;
 }
 
-.item:hover
+.item:active
 {
     background-color: darkblue;
 }
