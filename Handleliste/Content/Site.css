@@ -1,4 +1,12 @@
-﻿.loading {
+﻿.move_to_shopping_cart {
+    background-color: lightblue;
+    color: white;
+    padding: 10px;
+    font-size: 120%;
+    width: 10px;
+}
+
+.loading {
     background-image: url('Images/ajax-loader.gif');
     background-repeat: no-repeat;
     background-position: center;

@@ -56,7 +56,13 @@
                 });
                 self.items(mappedItems);
 
-                $(".item").draggable();
+                $(".item").bind("click", function () {
+                    alert("clicked!");
+                });
+
+                $(".item").bind("swiperight", function () {
+                    alert("swoped!");
+                });
                 $("#loader").removeClass("loading");
             });
 
