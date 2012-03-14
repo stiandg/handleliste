@@ -15,12 +15,7 @@
 <table width="100%">
     <tbody data-bind="foreach: items">
         <tr>
-            <td data-bind="text: name" class="item">
-                
-            </td>
-            <td class="move_to_shopping_cart" >
-                <button data-icon="check">&nbsp;</button>
-            </td>
+            <td data-bind="text: name, click: moveToShoppingCart" class="item" />
         </tr>
     </tbody>
 </table>
@@ -32,3 +27,13 @@
         <button data-bind="click: addNewItem">legg til</button>
     </p>
 </fieldset>
+
+<h3>handlet inn allerede:</h3>
+
+<table width="100%">
+    <tbody data-bind="foreach: itemsInShoppingCart">
+        <tr>
+            <td data-bind="text: name, click: moveToShoppingCart" />
+        </tr>
+    </tbody>
+</table>

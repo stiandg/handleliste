@@ -27,56 +27,73 @@
 
     $(document).ready(function () {
 
+        var shoppingListViewModel = new ShoppingListViewModel();
+
         function ItemViewModel(name) {
             var self = this;
             self.name = ko.observable(name);
+            self.id = ko.observable("");
+            self.inShoppingCart = ko.observable("");
+
+            self.moveToShoppingCart = function () {
+                self.inShoppingCart(true);
+                shoppingListViewModel.items.remove(self);
+                shoppingListViewModel.itemsInShoppingCart.unshift(self);
+                $.ajax("/api/" + self.id(), {
+                    data: ko.toJSON(self),
+                    type: "put",
+                    contentType: "application/json",
+                    error: function (message) { alert(message); }
+                });
+            };
         };
 
         function ShoppingListViewModel() {
             var self = this;
-            self.items = ko.observableArray([
-            //new ItemViewModel("brød"),
-            //new ItemViewModel("melk")
-                 ]);
-
+            self.items = ko.observableArray([]);
+            self.itemsInShoppingCart = ko.observableArray([]);
             self.newItemText = ko.observable();
 
             // Operations
             self.addNewItem = function () {
+                if (!this.newItemText()) return;
+
                 var newItem = new ItemViewModel(this.newItemText());
-                self.items.push(newItem);
-                save(newItem);
+                self.items.unshift(newItem);
+
+                $.ajax("/api/items", {
+                    data: ko.toJSON(newItem),
+                    type: "post",
+                    contentType: "application/json",
+                    error: function (message) { alert(message); },
+                    success: function (data) {
+                        newItem.id(data.Id);
+                    }
+                });
+
                 self.newItemText("");
             };
 
             // Load initial state from server, convert it to ItemViewModel instances, then populate self.items
             $.getJSON("/api/items", function (data) {
-                var mappedItems = $.map(data, function (item) {
-                    return new ItemViewModel(item.Name)
-                });
-                self.items(mappedItems);
 
-                $(".item").bind("click", function () {
-                    alert("clicked!");
+                $.map(data, function (item) {
+                    var mappedItem = new ItemViewModel(item.Name);
+                    mappedItem.id(item.Id);
+                    mappedItem.inShoppingCart(item.InShoppingCart);
+
+                    if (mappedItem.inShoppingCart() == true)
+                        self.itemsInShoppingCart.push(mappedItem);
+                    else
+                        self.items.push(mappedItem);
+                    return mappedItem;
                 });
 
-                $(".item").bind("swiperight", function () {
-                    alert("swoped!");
-                });
                 $("#loader").removeClass("loading");
             });
-
-            // Save to server
-            save = function (newItem) {
-                $.ajax("/api/items", {
-                    data: ko.toJSON(newItem),
-                    type: "post", contentType: "application/json",
-                    error: function (message) { alert(message) }
-                });
-            };
         };
 
-        ko.applyBindings(new ShoppingListViewModel());
+        ko.applyBindings(shoppingListViewModel);
     });
     
     </script>

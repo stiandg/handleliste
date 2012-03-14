@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using Handleliste.Models;
@@ -9,42 +10,43 @@ namespace Handleliste.Controllers
 {
     public class ItemsController : ApiController
     {
-        //private static List<Item> items = new List<Item> { new Item("melk"), new Item("brød") };
-
         private static readonly IDocumentStore DocumentStore =
             new DocumentStore {ConnectionStringName = "RAVENHQ_CONNECTION_STRING"}.Initialize();
 
-        // GET /api/items
         public IEnumerable<Item> Get()
         {
             using (var session = DocumentStore.OpenSession())
-                return session.Query<Item>();
+                return session.Query<Item>().OrderByDescending(x => x.Id);
         }
-
-        // GET /api/items/5
+        
         public string Get(int id)
         {
-            return "melk";
+            throw new NotImplementedException();
         }
 
-        // POST /api/items
-        public void Post(Item newItem)
+        public Item Post(Item newItem)
         {
             using (var session = DocumentStore.OpenSession())
             {
                 session.Store(newItem);
                 session.SaveChanges();
             }
+
+            return newItem;
         }
 
-        // PUT /api/items/5
-        public void Put(int id, string value)
+        public void Put(string id, Item itemWithChanges)
         {
+            using (var session = DocumentStore.OpenSession())
+            {
+                session.Store(itemWithChanges);
+                session.SaveChanges();
+            }
         }
 
-        // DELETE /api/items/5
         public void Delete(int id)
         {
+            throw new NotImplementedException();
         }
     }
 }

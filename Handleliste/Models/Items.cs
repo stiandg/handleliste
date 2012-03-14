@@ -2,14 +2,18 @@
 {
     public class Item
     {
-        public Item() { }
-
-        public Item(string name)
+        public Item()
         {
-            this.Name = name;
+            InShoppingCart = false;
+        }
+
+        public Item(string name) : this()
+        {
+            Name = name;
         }
 
         public string Id { get; set; }
         public string Name { get; set; }
+        public bool InShoppingCart { get; set; }
     }
 }
