@@ -26,6 +26,8 @@ namespace Handleliste.Controllers
 
         public Item Post(Item newItem)
         {
+            newItem.TimestampCreated = DateTime.Now;
+
             using (var session = DocumentStore.OpenSession())
             {
                 session.Store(newItem);

@@ -34,6 +34,7 @@
             self.name = ko.observable(name);
             self.id = ko.observable("");
             self.inShoppingCart = ko.observable("");
+            self.createdWhen = ko.observable("");
 
             self.moveToShoppingCart = function () {
                 self.inShoppingCart(true);
@@ -59,6 +60,7 @@
                 if (!this.newItemText()) return;
 
                 var newItem = new ItemViewModel(this.newItemText());
+                newItem.createdWhen = "nå";
                 self.items.unshift(newItem);
 
                 $.ajax("/api/items", {
@@ -81,6 +83,7 @@
                     var mappedItem = new ItemViewModel(item.Name);
                     mappedItem.id(item.Id);
                     mappedItem.inShoppingCart(item.InShoppingCart);
+                    mappedItem.createdWhen(item.CreatedWhen);
 
                     if (mappedItem.inShoppingCart() == true)
                         self.itemsInShoppingCart.push(mappedItem);

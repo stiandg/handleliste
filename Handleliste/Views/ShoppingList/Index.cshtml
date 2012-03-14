@@ -2,23 +2,28 @@
     ViewBag.Title = "Handleliste";
 }
 
-@*<ul data-role="listview" data-inset="true">
-    <li data-role="list-divider">Handleliste</li>
-    <li>Melk</li>
-    <li>Brød</li>
-</ul>*@
+<script type="text/html" id="item-template">
+    <div class="item" data-bind="click: moveToShoppingCart">
+        <span data-bind="text: name" /> 
+        <div class="addedWhen">
+            lagt til <span data-bind="text: createdWhen" />
+        </div>
+    </div>
+</script>
 
 <h1>handleliste:</h1>
 
 <div id="loader" class="loading">&nbsp;</div>
 
-<table width="100%">
+@*<table width="100%">
     <tbody data-bind="foreach: items">
         <tr>
             <td data-bind="text: name, click: moveToShoppingCart" class="item" />
         </tr>
     </tbody>
-</table>
+</table>*@
+
+<div data-bind="template: { name: 'item-template', foreach: items }"></div>
 
 <div id="emptyListMessage">
     <span data-bind="visible: items().length == 0">
@@ -39,7 +44,7 @@
 <table width="100%">
     <tbody data-bind="foreach: itemsInShoppingCart">
         <tr>
-            <td data-bind="text: name, click: moveToShoppingCart" />
+            <td data-bind="text: name" />
         </tr>
     </tbody>
 </table>

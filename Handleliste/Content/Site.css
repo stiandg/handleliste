@@ -38,6 +38,16 @@
     color: white;
     padding: 10px;
     font-size: 120%;
+    margin: 2px;
+}
+
+.addedWhen 
+{
+    float: right;
+    color: darkgray;
+    margin-right: 60px;
+    font-size: 80%;
+    text-shadow: none;
 }
 
 .item:active
