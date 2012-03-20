@@ -16,7 +16,10 @@ namespace Handleliste.Controllers
         public IEnumerable<Item> Get()
         {
             using (var session = DocumentStore.OpenSession())
-                return session.Query<Item>().OrderByDescending(x => x.Id);
+            {
+                var list = session.Query<Item>().OrderByDescending(x => x.Id).ToList();
+                return list;
+            }
         }
         
         public string Get(int id)

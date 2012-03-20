@@ -6,7 +6,8 @@
 
 #addNewItemButton 
 {
-    float:right;
+    float: right;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 #emptyListMessage {
@@ -38,6 +39,7 @@
     color: white;
     padding: 10px;
     font-size: 120%;
+    font-family: 'Ubuntu', sans-serif;
     margin: 2px;
 }
 
@@ -98,4 +100,8 @@
 .ui-bar-e, .ui-body-e, .ui-btn-up-e, .ui-btn-hover-e, .ui-btn-down-e,
 .ui-btn-active  {
     text-shadow: none;
+}
+
+h1,h2,h3 {
+    font-family: 'Lobster Two', cursive;
 }
